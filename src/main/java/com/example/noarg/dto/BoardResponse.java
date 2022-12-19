@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class BoardResponse {
+public final class BoardResponse {
     private final Long id; // 변화 가능성x
     private final String title; // 변화 가능성x
 

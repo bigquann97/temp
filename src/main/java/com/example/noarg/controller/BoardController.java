@@ -4,6 +4,7 @@ import com.example.noarg.dto.BoardRequest;
 import com.example.noarg.dto.BoardResponse;
 import com.example.noarg.dto.EditBoardRequest;
 import com.example.noarg.service.BoardService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class BoardController {
     private final BoardService boardService;
 
     @PostMapping("/board")
-    public ResponseEntity<BoardResponse> uploadPost(@RequestBody BoardRequest req) {
+    public ResponseEntity<BoardResponse> uploadPost(@RequestBody @Valid BoardRequest req) {
         BoardResponse res = boardService.uploadPost(req);
         return ResponseEntity.ok().body(res);
     }
@@ -28,7 +29,7 @@ public class BoardController {
     }
 
     @PutMapping("/board/{id}")
-    public ResponseEntity<BoardResponse> modifyPost(@PathVariable Long id, @RequestBody EditBoardRequest req) {
+    public ResponseEntity<BoardResponse> modifyPost(@PathVariable Long id, @RequestBody @Valid EditBoardRequest req) {
         BoardResponse res = boardService.editPost(id, req);
         return ResponseEntity.ok().body(res);
     }
