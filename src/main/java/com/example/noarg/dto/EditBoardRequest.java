@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class EditBoardRequest {
-    private final String title;
-    private final String content;
+    private final String title; // 변화 가능성 x
+    private final String content; // 변화 가능성 x
 }
