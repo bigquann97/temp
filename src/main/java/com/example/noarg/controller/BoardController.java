@@ -3,6 +3,7 @@ package com.example.noarg.controller;
 import com.example.noarg.dto.BoardRequest;
 import com.example.noarg.dto.BoardResponse;
 import com.example.noarg.dto.EditBoardRequest;
+import com.example.noarg.dto.TempRequest;
 import com.example.noarg.service.BoardService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,5 +33,11 @@ public class BoardController {
     public ResponseEntity<BoardResponse> modifyPost(@PathVariable Long id, @RequestBody @Valid EditBoardRequest req) {
         BoardResponse res = boardService.editPost(id, req);
         return ResponseEntity.ok().body(res);
+    }
+
+    @PostMapping("/temp")
+    public TempRequest temp(@RequestBody TempRequest req) {
+        System.out.println(req.getName());
+        return req;
     }
 }
